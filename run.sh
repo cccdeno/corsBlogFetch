@@ -1,1 +1,1 @@
-deno run -A --cert ./key.pem app.js
+deno run -A --unsafely-ignore-certificate-errors app.js
