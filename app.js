@@ -66,5 +66,14 @@ console.info("CORS-enabled origin : ", corsOrigin);
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-console.log('Server run at http://localhost:8001')
-await app.listen({ port: 8001 })
+console.log('Server run at https://localhost:8001')
+// await app.listen({ port: 8001 })
+
+await app.listen({
+  port: 8001,
+  secure: true,
+  certFile: "./cert.crt",
+  keyFile: "./cert.key",
+  // This broadcasts that we can support HTTP/2 and HTTP/1.1 connections.
+  alpnProtocols: ["h2", "http/1.1"],
+})
