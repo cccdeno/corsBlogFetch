@@ -75,5 +75,5 @@ await app.listen({
   certFile: "./cert.crt",
   keyFile: "./cert.key",
   // This broadcasts that we can support HTTP/2 and HTTP/1.1 connections.
-  alpnProtocols: ["h2", "http/1.1"],
+  // alpnProtocols: ["h2", "http/1.1"],
 })

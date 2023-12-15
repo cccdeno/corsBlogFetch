@@ -1,6 +1,6 @@
 var R = {}
 
-let server = "http://172.104.100.202:8001"
+let server = "https://172.104.100.202:8001"
 // let server = ""
 
 async function fetchGetJson(path) {
