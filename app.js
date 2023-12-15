@@ -27,7 +27,6 @@ async function pub(ctx) {
 }
 
 async function list (ctx) {
-  // ctx.response.headers.set("Access-Control-Allow-Origin", "http://localhost:8000")
   // ctx.response.headers.set("access-control-allow-origin", "http://localhost:8000")
   ctx.response.type = 'application/json'
   ctx.response.body = posts
@@ -54,14 +53,16 @@ async function create (ctx) {
   }
 }
 
+let corsOrigin = 'https://cccdeno.github.io/'
+
 app.use(
   oakCors({
-    origin: 'http://172.104.100.202:8000',
+    origin: corsOrigin,
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   }),
 )
 // app.use(oakCors()); // Enable CORS for All Routes
-console.info("CORS-enabled web server listening on port 8000");
+console.info("CORS-enabled origin : ", corsOrigin);
 app.use(router.routes())
 app.use(router.allowedMethods())
 
