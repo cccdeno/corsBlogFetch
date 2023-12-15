@@ -53,15 +53,26 @@ async function create (ctx) {
   }
 }
 
-let corsOrigin = 'https://cccdeno.github.io/'
+// let corsOrigin = 'https://cccdeno.github.io/'
+let corsOrigin = '*'
 
+// app.use(oakCors()); // Enable CORS for All Routes
 app.use(
   oakCors({
     origin: corsOrigin,
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   }),
 )
+/*
+app.use(
+  oakCors({
+    origin: /^.+localhost:(1234|3000)$/,
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }),
+);
+*/
 // app.use(oakCors()); // Enable CORS for All Routes
+// console.info("CORS-enabled origin : ", corsOrigin);
 console.info("CORS-enabled origin : ", corsOrigin);
 app.use(router.routes())
 app.use(router.allowedMethods())
